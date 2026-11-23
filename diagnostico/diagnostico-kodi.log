@@ -1,0 +1,4 @@
+2026-11-23 17:46:03.979 T:8151  warning <general>: [AniPlay/Fontes] fonte=AniTube etapa=busca tempo_ms=476 http=301 destino=http://www.anitube.vip resultado=redirecionamento_recusado
+2026-11-23 17:46:04.391 T:8150  warning <general>: [AniPlay/Fontes] fonte=AniTube22 etapa=busca tempo_ms=894 http=302 destino=https://www.google.com resultado=redirecionamento_recusado
+2026-11-23 17:46:04.401 T:8149  warning <general>: [AniPlay/Fontes] fonte=HinataSoul etapa=busca tempo_ms=905 http=302 destino=https://www.google.com resultado=redirecionamento_recusado
+2026-11-23 17:46:05.318 T:8148     info <general>: [AniPlay/Fontes] fonte=Bakashi etapa=busca tempo_ms=1822 origem=rede itens=4 resultado=ok
