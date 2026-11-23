@@ -1,0 +1,12 @@
+UTC 2026-11-23T17:45:24+00:00
+Busca de teste: One Piece. Examina a primeira resposta HTTP, sem seguir redirecionamentos.
+Bakashi | cliente=Kodi | HTTP=200 tipo=text/html | ms=947
+Bakashi | cliente=Scraper | HTTP=200 tipo=text/html | ms=1044
+HinataSoul | cliente=Kodi | HTTP=302 destino=https://www.google.com | ms=766
+HinataSoul | cliente=Scraper | HTTP=302 destino=https://www.google.com | ms=767
+AniTube22 | cliente=Kodi | HTTP=302 destino=https://www.google.com | ms=1009
+AniTube22 | cliente=Scraper | HTTP=302 destino=https://www.google.com | ms=1295
+AniTube | cliente=Kodi | HTTP=301 destino=http://www.anitube.vip | ms=557
+AniTube | cliente=Scraper | HTTP=301 destino=http://www.anitube.vip | ms=535
+AniTube com www | cliente=Kodi | HTTP=302 destino=https://www.google.com | ms=964
+AniTube com www | cliente=Scraper | HTTP=302 destino=https://www.google.com | ms=969
