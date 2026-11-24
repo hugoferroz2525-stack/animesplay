@@ -133,8 +133,9 @@ class CatalogMapping(unittest.TestCase):
         second = self.source('aaf08754be3b5dab97813591436ce7954c7c182c')
         with patch.object(multi, 'load_episodes', return_value=self.rows(*range(13))):
             rows = multi.variant_rows([second], {})
-        self.assertEqual([int(r[0]['local']) for r in rows[2]], list(range(13, 25)))
-        self.assertEqual(rows[-1][0][0]['raw'], '0')
+        self.assertEqual([int(r[0]['local']) for r in rows[2] if r[0]['mapped']], list(range(13, 25)))
+        self.assertEqual(rows[2][0][0]['raw'], '0')
+        self.assertFalse(rows[2][0][0]['mapped'])
         grouped = multi.grouped([('HinataSoul', '2nd Season', first['url'], ''),
                                  ('HinataSoul', '2nd Season Part 2', second['url'], '')])
         self.assertEqual([group.key for group in grouped], ['tv:82684'])
@@ -145,8 +146,8 @@ class CatalogMapping(unittest.TestCase):
                                {'season_number': 2, 'episode_count': 3}]}
         with patch.object(multi, 'load_episodes', return_value=self.rows(1, 2, 2, 3)):
             rows = multi.variant_rows([src], seasons)
-        self.assertEqual([r[0]['url'] for r in rows[-1]], [f'{HINATA}/videos/101', f'{HINATA}/videos/102'])
-        self.assertEqual(rows[2][0][0]['raw'], '3')
+        self.assertEqual([r[0]['url'] for r in rows[2] if not r[0]['mapped']], [f'{HINATA}/videos/101', f'{HINATA}/videos/102'])
+        self.assertEqual(rows[2][-1][0]['raw'], '3')
 
     def test_two_cosmos_parts_send_movie_tags(self):
         src = self.source('bishoujo-senshi-sailor-moon-cosmos-movie')

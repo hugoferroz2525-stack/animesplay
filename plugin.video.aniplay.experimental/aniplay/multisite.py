@@ -17,7 +17,7 @@ from urllib.error import HTTPError, URLError
 from aniplay.providers.catalog import FONTES, extrair_animes, extrair_episodios
 from aniplay.providers.grouping import agrupar_animes, chave_titulo, identity
 from aniplay.providers.editions import (
-    COSMOS, COSMOS_FILMS, ONE_PIECE, SEGMENTS, companion_segment, provider_slug,
+    COSMOS, COSMOS_FILMS, NARUTO, ONE_PIECE, SEGMENTS, companion_segment, provider_slug,
     reference as provider_reference,
 )
 from aniplay.providers.scraper import Document, http_url, next_page
@@ -67,16 +67,23 @@ def search_source(site, term):
     path = '/lista-de-animes' if kind == 'bakashi' else '/busca' if term else '/'
     address = origin + path + ('?' + urlencode({query: term}) if term else '')
     found, visited = [], set()
+    complete = True
     deadline = monotonic() + 12
     db = Cache(database)
     started = monotonic()
     stage = 'busca' if term else 'catalogo'
+    snapshot = 'provider-search-v1:' + address
     try:
+        saved = db.db.execute('SELECT body FROM pages WHERE id=? AND stamp>?',
+                              (snapshot, time() - 900)).fetchone()
+        if saved:
+            return json.loads(saved[0]), ''
         while (address and address not in visited and len(visited) < MAX_SEARCH_PAGES
                and monotonic() < deadline):
             visited.add(address)
             started = monotonic()
             html = page(db, site, address)
+            complete = complete and not db.last_failure
             if kind == 'bakashi':
                 entries = [(row['name'], row['url'], row['art']) for row in cards(html)]
             else:
@@ -90,6 +97,10 @@ def search_source(site, term):
                 if urlsplit(url).path not in ('', '/'):
                     found.append((site, clean_text(name), url, image))
             address = next_page(Document(html).root, address)[0] if term and entries else ''
+        if found and complete and not address:
+            with db.db:
+                db.db.execute('INSERT OR REPLACE INTO pages VALUES(?,?,?)', (snapshot, time(), encode(found)))
+            db.trim_cache()
     except (OSError, ValueError) as error:
         source_log(site, stage, started, error=error)
         return found, site if not found else ''
@@ -255,30 +266,42 @@ def episode_numbers(title, url):
 
 def group_episodes(entries, show, *, separate_reused=False):
     numbered = [(title, url, art, *episode_numbers(title, url)) for title, url, art in entries]
-    explicit = any(s is not None for _, _, _, s, _ in numbered)
-    counts = Counter(row[-1] for row in numbered if row[-1] is not None)
+    explicit = any(season is not None for _, _, _, season, _ in numbered)
+    counts = Counter(number for _, _, _, _, number in numbered if number is not None)
     numbers = counts if separate_reused else (row[-1] for row in numbered)
-    ranges = flat_season_ranges(show.get('seasons', []), numbers, allow_gaps=True) if not explicit else []
+    official = show.get('seasons', [])
+    ranges = flat_season_ranges(official, numbers, allow_gaps=True) if not explicit else []
+    regular = [part for part in official if part.get('season_number', 0) > 0]
+    single = regular[0] if len(regular) == 1 and regular[0]['season_number'] == 1 else {}
     buckets = {}
     for title, url, art, season, number in numbered:
         local = number
-        if separate_reused and (number is None or counts[number] > 1 or not ranges):
-            season = -1
-        elif ranges:
-            season, local = flat_season_position(ranges, number)
         if season is None:
-            season = -1 if explicit else 1
+            if ranges:
+                season, local = flat_season_position(ranges, number)
+                if season < 0:
+                    season = None
+            elif single and number is not None and 1 <= number <= (single.get('episode_count') or 0):
+                season = 1
         buckets.setdefault(season, []).append((title, url, art, local, number))
-    for rows in buckets.values():
-        rows.sort(key=lambda row: (row[3] is None, row[3] or 0))
-    return dict(sorted(buckets.items(), key=lambda pair: (pair[0] < 0, pair[0])))
+    return buckets
+
+
+class EpisodeList(list):
+    def __init__(self, rows, complete):
+        super().__init__(rows)
+        self.complete = complete
+
+
+class SeasonRows(dict):
+    complete = True
 
 
 def load_episodes(site, url):
-    snapshot_key = 'provider-episodes-v1:' + url
+    snapshot_key = 'provider-episodes-v2:' + url
     saved = cache.db.execute('SELECT body FROM pages WHERE id=? AND stamp>?', (snapshot_key, time()-1800)).fetchone()
     if saved:
-        return json.loads(saved[0])
+        return EpisodeList(json.loads(saved[0]), True)
     complete = True
     kind = SOURCES[site][1]
     entries, visited = {}, set()
@@ -295,12 +318,17 @@ def load_episodes(site, url):
                 raise
             notification('Parte da lista de episódios está indisponível.', site, 'alert')
             break
+        previous_size = len(entries)
         for row in rows:
             try:
                 check_source(site, row[1])
             except ValueError:
+                complete = False
                 continue
             entries.setdefault(row[1], row)
+        if len(entries) == previous_size:
+            complete = False
+            break
     if url and len(visited) == MAX_EPISODE_PAGES:
         notification('A lista atingiu o limite de páginas.', site, 'alert')
     result = list(entries.values())
@@ -308,7 +336,7 @@ def load_episodes(site, url):
         with cache.db:
             cache.db.execute('INSERT OR REPLACE INTO pages VALUES(?,?,?)', (snapshot_key, time(), encode(result)))
         cache.trim_cache()
-    return result
+    return EpisodeList(result, complete and not url)
 
 
 def server_rows():
@@ -339,9 +367,11 @@ def provider_season_sources(sources):
     expanded = {src['url']: src for src in sources}
     for src in sources:
         companion = companion_segment(src['url'])
-        if companion and companion not in expanded:
-            check_source(src['site'], companion)
-            expanded[companion] = dict(src, url=companion, season=None)
+        if companion:
+            if companion not in expanded:
+                check_source(src['site'], companion)
+                expanded[companion] = dict(src, url=companion, season=None)
+            continue
         try:
             root = Document(page(cache, src['site'], src['url'])).root
         except (OSError, ValueError):
@@ -369,41 +399,71 @@ def provider_season_sources(sources):
 
 
 def variant_rows(sources, data):
-    buckets = {}
+    rows_by_source = []
+    complete = True
     for src in sources:
         try:
             entries = load_episodes(src['site'], src['url'])
         except (OSError, ValueError):
+            complete = False
             continue
+        ready = getattr(entries, 'complete', True)
+        complete = complete and ready
         hint = src.get('season')
-        slug = provider_slug(src['url'])
-        segment = SEGMENTS.get(slug)
-        assigned = group_episodes(entries, {} if hint or segment else data,
-                                  separate_reused=slug in ONE_PIECE and not hint)
+        key = provider_slug(src['url'])
+        segment = SEGMENTS.get(key)
+        if segment and data.get('id') not in (None, segment[0]):
+            segment = None
+        assigned = group_episodes(entries, {} if hint or segment or not ready else data,
+                                  separate_reused=key in ONE_PIECE or key in NARUTO)
+        ordered = {entry[1]: index for index, entry in enumerate(entries)}
+        local_rows = []
         for season, rows in assigned.items():
-            season = hint if season == 1 and hint else season
             for name, link, art, local, raw in rows:
-                target_season = season
+                target = season if season is not None else hint
+                official = next((part for part in data.get('seasons', [])
+                                 if part.get('season_number') == target), {})
+                mapped = (local is not None and local == int(local) and
+                          1 <= local <= (official.get('episode_count') or 0))
                 if segment:
-                    _, tmdb_season, offset, count = segment
-                    if raw is not None and raw == int(raw) and 1 <= raw <= count:
-                        target_season, local = tmdb_season, raw + offset
-                    else:
-                        target_season = -1
-                key = local if local is not None else link
-                target = buckets.setdefault(target_season, {}).setdefault(key, [])
-                if not any(candidate['url'] == link for candidate in target):
-                    target.append(dict(name=name, url=link, art=art, local=str(local) if local is not None else '',
+                    _, target, offset, count = segment
+                    mapped = raw is not None and raw == int(raw) and 1 <= raw <= count
+                    if mapped:
+                        local = raw + offset
+                local_rows.append(dict(name=name, url=link, art=art, local=str(local) if local is not None else '',
                                        raw=str(raw) if raw is not None else '', audio=src.get('audio', ''),
-                                       parent=src['url']))
-    result = {}
-    for season, rows in sorted(buckets.items(), key=lambda x: (x[0] < 0, x[0])):
+                                       parent=src['url'], season=target, mapped=mapped))
+        numbers = Counter((row['season'], row['local']) for row in local_rows if row['local'])
+        for row in local_rows:
+            if numbers[row['season'], row['local']] > 1:
+                row['mapped'] = False
+        rows_by_source.extend(sorted(local_rows, key=lambda row: ordered[row['url']]))
+
+    # Keep a normal source list whenever any row lacks a credible season. The
+    # original ordering remains available and verified rows retain their own IDs.
+    source_order = not complete or any(row['season'] is None for row in rows_by_source)
+    buckets = {}
+    seen = set()
+    for row in rows_by_source:
+        if row['url'] in seen:
+            continue
+        seen.add(row['url'])
+        season = None if source_order else row['season']
+        key = (row['season'], row['local']) if row['mapped'] else row['url']
+        buckets.setdefault(season, {}).setdefault(key, []).append(row)
+
+    result = SeasonRows()
+    result.complete = complete
+    for season, groups in buckets.items():
         result[season] = []
-        for key in sorted(rows, key=lambda key: (isinstance(key, str), key)):
-            options = rows[key]
-            # If an edition has more than one record, the number alone cannot pair editions.
+        ordered_groups = list(groups.values())
+        if not source_order:
+            ordered_groups.sort(key=lambda options: Decimal(options[0]['local']) if options[0]['local'] else Decimal('Infinity'))
+        for options in ordered_groups:
             if len({option['audio'] for option in options}) != len(options):
-                result[season].extend([option] for option in options)
+                for option in options:
+                    option['mapped'] = False
+                    result[season].append([option])
             else:
                 result[season].append(options)
     return result
@@ -449,13 +509,17 @@ def export_provider():
         for options in episodes:
             row = options[0]
             params = dict(url=row['url'], provider=site, show_url=row['parent'], show_title=q['title'],
-                          season=season, raw=row['raw'], local=row['local'], art=row['art'], title=row['name'])
-            if data.get('media_type') == 'tv':
-                params['showid'] = data['id']
+                          raw=row['raw'], local=row['local'], art=row['art'], title=row['name'])
+            if not row['mapped']:
+                params['source_order'] = '1'
+            if row['mapped']:
+                params['season'] = row['season']
+                if data.get('media_type') == 'tv':
+                    params['showid'] = data['id']
             languages = audio_variants(options)
             if len(languages) > 1:
                 params['audio_options'] = encode(languages)
-            write_episode(q['title'], params, max(0, season), row['local'])
+            write_episode(q['title'], params, row['season'] if row['mapped'] else 0, row['local'])
             count += 1
     return count
 
@@ -478,13 +542,20 @@ def seasons():
         for heading, params, data in cosmos_films(sources, q['title'], q.get('art', '')):
             item(heading, 'play', params, data, params['art'], icon='episode')
         return
-    bk = q.get('bakashi', '')
-    if bk:
-        check_source('Bakashi', bk)
     title = q.get('title', '')
-    data = lookup(title, cache, bk or sources[0]['url'], full=True)
+    # Resolve against the selected server. A different server's slug is not evidence.
+    data = lookup(title, cache, sources[0]['url'], full=True)
     sources = provider_season_sources(sources)
     episodes = variant_rows(sources, data)
+    if data.get('media_type') == 'movie' and data.get('id') and episodes.complete:
+        movie_rows = [group for rows in episodes.values() for group in rows]
+        if len(movie_rows) == 1 and len(movie_rows[0]) == 1:
+            movie = movie_rows[0][0]
+            label = data.get('name') or title
+            params = dict(url=movie['url'], provider=site, show_url=movie['parent'],
+                          title=label, movie_id=data['id'], art=movie['art'] or q.get('art', ''))
+            item(label, 'play', params, data, params['art'])
+            return
     official = {part['season_number']: part for part in data.get('seasons', [])}
     art = q.get('art', '')
     from aniplay.metadata import get_image
@@ -492,47 +563,60 @@ def seasons():
     selected = q.get('season')
     params = {key: value for key, value in q.items() if key != 'action'}
     xbmcplugin.setPluginCategory(handle, title)
-    if selected is None:
-        history = History(profile)
-        watched_urls = set().union(*(history.watched_for_show(src['url']) for src in sources))
-        for number, rows in episodes.items():
+    if not episodes.complete:
+        notification('Lista parcial. O servidor não confirmou todos os episódios.', site, 'alert')
+    if selected is None and None not in episodes:
+        progress = History(profile).progress_for(
+            option['url'] for rows in episodes.values() for options in rows for option in options)
+        for number, rows in sorted(episodes.items()):
             info = official.get(number, {})
-            heading = season_title(number, info.get('name'), 'Outros episódios' if number < 0 else '')
+            heading = season_title(number, info.get('name'), 'Especiais' if number == 0 else '')
             prefix, separator, arc = heading.partition(' · ')
-            label = prefix + separator + (yellow(arc) if arc else '')
-            watched = sum(any(option['url'] in watched_urls for option in options) for options in rows)
-            item(f'{label} ({len(rows)})', 'multi_episodes', dict(params, season=number),
-                 info, art, icon='season', fan=fan, info=dict(title=label, sorttitle=heading, mediatype='season',
-                 tvshowtitle=title, season=max(0, number)), season_progress=(watched, len(rows)))
+            count = f'{len(rows)} eps' if episodes.complete else f'{len(rows)} eps encontrados · parcial'
+            label = f'{prefix}{separator}{yellow(arc) if arc else ""} ({count})'
+            watched = sum(any(progress.get(option['url'], (0, 0, False))[2] for option in options) for options in rows)
+            item(label, 'multi_episodes', dict(params, season=number), info, art, icon='season', fan=fan,
+                 info=dict(title=label, sorttitle=heading, mediatype='season', tvshowtitle=title, season=number),
+                 season_progress=(watched, len(rows)), season_partial=not episodes.complete)
         return
-    number = int(selected)
-    ref = provider_reference(sources[0]['url'])
-    show_id = (data.get('id') if data.get('media_type') == 'tv' else ref[1] if ref else None) if number >= 0 else None
-    tmdb = season_details(show_id, number, cache) if show_id else {}
-    details = {entry['episode_number']: entry for entry in tmdb.get('episodes', [])}
-    cast = (tmdb.get('credits') or data.get('credits') or {}).get('cast')
+    number = None if None in episodes or selected in (None, 'source', '-1') else int(selected)
     rows = episodes.get(number, [])
     offset = max(0, int(q.get('offset', '0')))
+    ref = provider_reference(sources[0]['url'])
+    show_id = data.get('id') if data.get('media_type') == 'tv' else ref[1] if ref and not data.get('id') else None
+    metadata_by_season = {}
     for options in rows[offset:offset + 24]:
         episode = options[0]
         local = episode['local']
-        meta = dict(details.get(int(local), {})) if local.isdigit() else {}
-        suffix = re.search(r'\b(?:ep\.?|epis[oó]dio|episode)\s*[-:#]?\s*\d+(?:[.,]\d+)?\s*[-:·–]\s*(.+)$', episode['name'], re.I)
-        heading = meta.get('name') or (suffix[1] if suffix else episode['name'] if not local or number < 0 else '')
-        label = episode_title(local, heading)
+        season = episode['season']
+        meta, cast = {}, None
+        if show_id and episode['mapped'] and local.isdigit():
+            if season not in metadata_by_season:
+                season_data = season_details(show_id, season, cache)
+                metadata_by_season[season] = (
+                    {entry['episode_number']: entry for entry in season_data.get('episodes', [])},
+                    (season_data.get('credits') or data.get('credits') or {}).get('cast'),
+                )
+            by_number, cast = metadata_by_season[season]
+            meta = by_number.get(int(local), {})
+        source_label = episode['name']
+        label = episode_title(local, meta['name']) if number is not None and meta.get('name') else source_label
         values = dict(url=episode['url'], provider=site, show_url=episode['parent'], show_title=title,
-                      title=label, art=episode['art'] or art, episode_title=heading, season=number,
-                      raw=episode['raw'], local=local)
+                      title=label, art=episode['art'] or art, episode_title=meta.get('name') or source_label,
+                      raw=episode['raw'])
+        if episode['mapped']:
+            values.update(season=season, local=local)
+            if show_id:
+                values['showid'] = show_id
+        if not episode['mapped']:
+            values['source_order'] = '1'
         audio = audio_variants(options)
         if len(audio) > 1:
             values['audio_options'] = encode(audio)
-        if show_id:
-            values['showid'] = show_id
-        if number < 0:
-            values.pop('season', None)
         item(label, 'play', values, meta, values['art'], icon='episode', cast=cast, fan=fan)
     if len(rows) > offset + 24:
-        item('Próxima página', 'multi_episodes', dict(params, offset=offset + 24), icon='next')
+        item('Próxima página', 'multi_episodes',
+             dict(params, season=number if number is not None else 'source', offset=offset + 24), icon='next')
 
 
 def select_external_audio():

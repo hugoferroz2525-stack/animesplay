@@ -209,7 +209,7 @@ def handle_continue():
     for episode, offset in rows:
         title = episode['title']
         label = title + (' · %d:%02d' % divmod(int(offset), 60) if offset else '')
-        params = {k: episode[k] for k in ('showid', 'season', 'local', 'raw', 'movie_id', 'show_url', 'show_title', 'episode_title', 'provider') if episode.get(k)}
+        params = {k: episode[k] for k in ('showid', 'season', 'local', 'raw', 'movie_id', 'show_url', 'show_title', 'episode_title', 'provider', 'source_order') if episode.get(k)}
         params.update(url=episode['url'], title=title, art=episode.get('icon', ''))
         item(label, 'play', params, art=params['art'])
     if not rows:

@@ -178,6 +178,7 @@ class Client:
         self.cookies = CookieJar()
         self.opener = build_opener(SafeRedirect(), HTTPCookieProcessor(self.cookies))
         self.timeout = timeout
+        self.dimension_prefix = None
 
     def playback_headers(self, url, referer):
         request = Request(url)
@@ -259,7 +260,9 @@ class Client:
 
     def verify(self, url, referer='', extra_headers=None, *, identifier='', declared=''):
         check_authorization(url)
-        with self.open(url, referer, first_bytes=True, extra_headers=extra_headers) as response:
+        sample_size = 131072 if self.dimension_prefix is not None else 1024
+        byte_range = (0, sample_size) if self.dimension_prefix is not None else None
+        with self.open(url, referer, first_bytes=True, extra_headers=extra_headers, byte_range=byte_range) as response:
             final = response.geturl()
             status = response.status
             content_type = response.headers.get_content_type()
@@ -272,12 +275,14 @@ class Client:
                     status))
             check_authorization(final)
             try:
-                body = response.read(1024)
+                body = response.read(sample_size)
             except (OSError, HTTPException):
                 raise ScraperError('Falha de rede ao ler a mídia (HTTP {}).'.format(status)) from None
             manifest = body.lstrip().startswith(b'#EXTM3U')
             mp4 = body[4:8] in (b'ftyp', b'moov', b'mdat', b'free', b'wide', b'styp')
             if status in (200, 206) and (manifest or mp4):
+                if self.dimension_prefix is not None:
+                    self.dimension_prefix = body
                 return status, content_type
             raise ScraperError('HTTP {} ({}): corpo sem assinatura MP4 ou HLS reconhecida.'.format(
                 status, content_type))
@@ -571,13 +576,17 @@ def mp4_height(resolver, stream):
     """Read track dimensions using bounded ranges, skipping the media payload."""
     offset = 0
     limit = 131072
+    prefix = resolver.client.dimension_prefix
     for _ in range(8):
-        with resolver.client.open(stream, resolver.referer, extra_headers=resolver.headers,
-                                  byte_range=(offset, limit)) as response:
-            if offset and (response.status != 206 or not response.headers.get(
-                    'Content-Range', '').startswith(f'bytes {offset}-')):
-                return None
-            data = response.read(limit)
+        if offset == 0 and prefix:
+            data = prefix
+        else:
+            with resolver.client.open(stream, resolver.referer, extra_headers=resolver.headers,
+                                      byte_range=(offset, limit)) as response:
+                if offset and (response.status != 206 or not response.headers.get(
+                        'Content-Range', '').startswith(f'bytes {offset}-')):
+                    return None
+                data = response.read(limit)
         pos = 0
         while pos + 8 <= len(data):
             size = int.from_bytes(data[pos:pos+4], 'big')
@@ -606,11 +615,6 @@ def mp4_height(resolver, stream):
 def quality_choices(response):
     document = Document(response.text).root
     options = player_options(document, response.url)
-    origin = urlsplit(response.url)
-    measured = {}
-    if origin.scheme == 'https' and origin.hostname == 'www.hinatasoul.com' and episode_id(response.url) == '509115':
-        # These player IDs were measured for this episode.
-        measured = {'0': '360p', '1': '720p', '2': '1080p'}
     scope = document.find('div', element_id='player') or document
     choices = []
     for video in scope.find_all('video'):
@@ -624,5 +628,5 @@ def quality_choices(response):
         anchor = next((tag for tag in document.find_all('a')
                        if http_url(tag.attrs.get('href'), response.url) == url), None)
         text = ' '.join((anchor.text(), anchor.attrs.get('title', ''), anchor.attrs.get('data-quality', ''))) if anchor else ''
-        choices.append((quality_label(text) or measured.get(player) or f'Player {j}', 'player', player))
+        choices.append((quality_label(text) or f'Player {j}', 'player', player))
     return list(dict.fromkeys(choices))

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<addon id="plugin.video.aniplay.experimental" name="[COLOR FFFFD32D][B]Ani[/B]Play Experimental[/COLOR]" version="2.7.41" provider-name="AniPlay">
+<addon id="plugin.video.aniplay.experimental" name="[COLOR FFFFD32D][B]Ani[/B]Play Experimental[/COLOR]" version="2.7.42" provider-name="AniPlay">
     <requires>
         <import addon="xbmc.python" version="3.0.1" />
         <import addon="script.module.pil" version="5.1.0" />
@@ -15,7 +15,7 @@
         <platform>all</platform>
         <license>GPL-3.0</license>
         <language>pt_BR</language>
-        <news>2.7.41 — Escolha explícita de áudio, diagnóstico de players e correções de identificação e episódios.</news>
+        <news>2.7.42 — Contagem por servidor, listas sem associações presumidas e qualidade confirmada no primeiro seletor.</news>
         <assets>
             <icon>icon.png</icon>
             <fanart>fanart.jpg</fanart>

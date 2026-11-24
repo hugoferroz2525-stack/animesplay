@@ -20,6 +20,8 @@ SEGMENT_PAIRS = (
 DIGIMON = '3ffe62e3b6aac35030469cf85cec7fd55bf2b726'
 COSMOS = 'bishoujo-senshi-sailor-moon-cosmos-movie'
 COSMOS_FILMS = {1: 968868, 2: 968870}
+NARUTO = {'ce2d64638ce1a0d3928d04cd395e462c1c834b1a',
+          '75b296267e8ab2135b2dee3a771a2ad2c5dbb1fc'}
 ONE_PIECE = {'e1eaa4181415abd4e16cce073629ee329ebd3200',
              '7804b6bdda34932920657ba29e64025244f485c7'}
 
@@ -42,6 +44,8 @@ def reference(url):
         return 'tv', 31654, None
     if key in ONE_PIECE:
         return 'tv', 37854, None
+    if key in NARUTO:
+        return 'tv', 31910, None
     return None
 
 

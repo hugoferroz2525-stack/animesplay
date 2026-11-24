@@ -1,9 +1,8 @@
 import json
 import re
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlsplit
 from aniplay.runtime import addon, token, image_base
 from aniplay.network import CATALOG_HOST, CLOUD_HOST, TMDB_HOST
-from urllib.parse import urlsplit
 from aniplay.providers.editions import reference as provider_reference
 from aniplay.tmdb_match import bakashi_metadata, index, slug, unique_hit, title_variants, dated_hit
 
@@ -67,8 +66,8 @@ def details(kind, ident, db, full=False, *, cached_only=False):
     if not data and kind in ('tv', 'movie'):
         key = f'{kind}/{ident}'
         card = cloud_cards([key], db, cached_only=cached_only).get(key, {})
-        if str(card.get('id')) == str(ident):
-            return card
+        if str(card.get('id')) == str(ident) and card.get('media_type', kind) == kind:
+            return {**card, 'media_type': kind}
     if data:
         data['media_type'] = kind
         if kind == 'movie':
@@ -81,7 +80,7 @@ def lookup(name, db, url, full=False, year=None):
     ref = reference(url,db)
     if ref:
         return details(ref[0],ref[1],db,full)
-    fallback = bakashi_metadata().get(slug(url))
+    fallback = bakashi_metadata().get(slug(url)) if urlsplit(url).hostname == CATALOG_HOST else None
     if fallback:
         return dict(fallback)
     titles = title_variants(name)

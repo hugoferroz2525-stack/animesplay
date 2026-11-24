@@ -24,7 +24,8 @@ def catalog_metadata(entries):
         for start in range(0, len(ids), 25):
             batch = ids[start:start + 25]
             by_id.update({key: data for key, data in cloud_cards(batch, cache).items()
-                          if str(data['id']) == key.split('/')[1]})
+                          if str(data['id']) == key.split('/')[1]
+                          and data.get('media_type', key.split('/')[0]) == key.split('/')[0]})
 
     metadata = [by_id.get(key, {}) for key in keys] if keys else [{} for _ in entries]
 
@@ -45,7 +46,8 @@ def catalog_metadata(entries):
     elif missing:
         fallback = bakashi_metadata()
         for i in missing:
-            metadata[i] = dict(fallback.get(slug(entries[i]['url']), {}))
+            if urlsplit(entries[i]['url']).hostname == urlsplit(BASE).hostname:
+                metadata[i] = dict(fallback.get(slug(entries[i]['url']), {}))
     return metadata
 
 

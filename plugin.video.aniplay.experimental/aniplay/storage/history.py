@@ -11,7 +11,7 @@ from pathlib import Path
 
 PENDING = 'AniPlay.PendingPlayback'
 FIELDS = ('id', 'url', 'title', 'showtitle', 'episode_title', '_tmdb_title', 'show_url', 'icon', 'episode',
-          'showid', 'local', 'raw', 'season', 'movie_id', 'show_title', 'provider', 'mediatype', 'audio', '_alternate_parents', 'tmdb_id', '_display_season', '_tmdb_season', '_tmdb_episode', '_season_mapped')
+          'showid', 'local', 'raw', 'season', 'movie_id', 'show_title', 'provider', 'mediatype', 'audio', '_alternate_parents', 'tmdb_id', '_display_season', '_tmdb_season', '_tmdb_episode', '_season_mapped', 'source_order')
 
 
 def media_key(path):

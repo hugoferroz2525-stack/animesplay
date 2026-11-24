@@ -21,6 +21,8 @@ def remember(params, data, cast, fan):
 
 
 def cached(params, *, include_stale=False):
+    if params.get('source_order'):
+        return None
     cache.db.execute('CREATE TABLE IF NOT EXISTS episode_links(url TEXT PRIMARY KEY, metadata TEXT)')
     row = cache.db.execute('SELECT metadata FROM episode_links WHERE url=?', (params['url'],)).fetchone()
     if not row:
@@ -42,6 +44,8 @@ def cached(params, *, include_stale=False):
 
 
 def restore(params):
+    if params.get('source_order'):
+        return {}
     snapshot = cached(params)
     if snapshot:
         return snapshot

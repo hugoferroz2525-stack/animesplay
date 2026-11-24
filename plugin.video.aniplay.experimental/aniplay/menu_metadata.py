@@ -32,6 +32,8 @@ def resolve(route,params,cache):
         return data
     from aniplay.episode_context import cached
     if route == 'play':
+        if params.get('source_order'):
+            return {}
         snapshot = cached(params)
         if snapshot:
             data = dict(snapshot['data'])

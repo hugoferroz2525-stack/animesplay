@@ -140,8 +140,8 @@ def play():
 
 def play_provider():
     from aniplay.multisite import HOSTS, check_source, source_log
-    from aniplay.providers.scraper import Resolver, ScraperError, NoPlayerMedia, quality_choices, quality_label, mp4_height
-    from aniplay.views import yellow
+    from aniplay.providers.scraper import Resolver, ScraperError, NoPlayerMedia, quality_choices
+    from aniplay.providers.quality import player_labels, resolve_choice
     from urllib.parse import urlsplit
 
     site = next((name for name, host in HOSTS.items()
@@ -154,44 +154,13 @@ def play_provider():
         page = resolver.episode_page(q['url'])
         choices = quality_choices(page)
         if choices:
-            labels = []
-            keys = []
-            for label, kind, value in choices:
-                key = 'quality:' + json.dumps([page.url, kind, value])
-                keys.append(key)
-                saved = cache.db.execute('SELECT body FROM pages WHERE id=? AND stamp>?',
-                                         (key, time.time()-86400)).fetchone()
-                labels.append(label if quality_label(label) or not saved else saved[0])
-            unknown = [i for i, label in enumerate(labels) if not quality_label(label)]
-            menu = [yellow(label) if quality_label(label) else label for label in labels]
-            if unknown and len(choices) > 1:
-                menu.append('Identificar resoluções')
-            choice = xbmcgui.Dialog().select('Qualidade ou player · ' + site, menu) if len(choices) > 1 else 0
-            if choice == len(choices):
-                for i in unknown:
-                    _, kind, value = choices[i]
-                    try:
-                        stream = (resolver._validate(value, page.url, '', value) if kind == 'source'
-                                  else resolver.get_player(page, value)['stream'])
-                        height = mp4_height(resolver, stream)
-                    except (OSError, ScraperError):
-                        continue
-                    if height:
-                        labels[i] = f'{height}p'
-                        with cache.db:
-                            cache.db.execute('INSERT OR REPLACE INTO pages VALUES(?,?,?)',
-                                             (keys[i], time.time(), labels[i]))
-                cache.trim_cache()
-                choice = xbmcgui.Dialog().select('Qualidade ou player · ' + site, [
-                    yellow(label) if quality_label(label) else label for label in labels])
+            choice = (xbmcgui.Dialog().select('Qualidade ou player · ' + site, player_labels(page, choices, cache))
+                      if len(choices) > 1 else 0)
             if choice < 0:
                 xbmcplugin.setResolvedUrl(handle, False, xbmcgui.ListItem())
                 return
             _, kind, value = choices[choice]
-            if kind == 'source':
-                stream = resolver._validate(value, page.url, '', value)
-            else:
-                stream = resolver.get_player(page, value)['stream']
+            stream = resolve_choice(resolver, page, kind, value)
         else:
             stream = resolver.get_player(page)['stream']
     except ScraperError as exc:
@@ -220,7 +189,7 @@ def finish_playback(audio, stream, markers, mime, frame, *, headers=None, rememb
     li=stream_item(stream,mime,frame,headers)
     episode = dict(id=q['url'], url=q['url'], title=q.get('title') or q['url'].split('/')[-1],
                    icon=q.get('art',''), audio=audio)
-    episode.update({k:q[k] for k in ('showid','season','local','raw','movie_id','show_url','show_title','episode_title','provider') if q.get(k)})
+    episode.update({k:q[k] for k in ('showid','season','local','raw','movie_id','show_url','show_title','episode_title','provider','source_order') if q.get(k)})
     offset = History(profile).resume(episode['id'])
     if offset:
         choice = xbmcgui.Dialog().select('Reprodução', [

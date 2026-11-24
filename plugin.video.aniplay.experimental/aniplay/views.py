@@ -89,7 +89,7 @@ def configure_actions(li, route, params, details, data, label, thumb, fan):
         li.addContextMenuItems(context)
 
 
-def item(label, route, params=None, data=None, art='', icon='play', info=None, cast=None, fan='', season_progress=None, server_badge=''):
+def item(label, route, params=None, data=None, art='', icon='play', info=None, cast=None, fan='', season_progress=None, server_badge='', season_partial=False):
     global listed
     label = clean_text(label)
     from aniplay.menu_metadata import resolve
@@ -131,11 +131,14 @@ def item(label, route, params=None, data=None, art='', icon='play', info=None, c
     li = xbmcgui.ListItem(label=label, offscreen=True)
     if season_progress:
         watched, total = season_progress
-        li.setProperty('TotalEpisodes', str(total))
         li.setProperty('WatchedEpisodes', str(watched))
-        li.setProperty('UnWatchedEpisodes', str(total - watched))
-        li.setProperty('AniPlay.SeasonProgress', f'{watched} de {total} vistos')
-        li.setProperty('AniPlay.SeasonPercent', str(round(100 * watched / total)) if total else '0')
+        if season_partial:
+            li.setProperty('AniPlay.SeasonProgress', f'{watched} vistos · lista parcial')
+        else:
+            li.setProperty('TotalEpisodes', str(total))
+            li.setProperty('UnWatchedEpisodes', str(total - watched))
+            li.setProperty('AniPlay.SeasonProgress', f'{watched} de {total} vistos')
+            li.setProperty('AniPlay.SeasonPercent', str(round(100 * watched / total)) if total else '0')
     icon_path = os.path.join(root, 'resources', 'icons', icon + '.png')
     details, thumb, fan = videotag.decorate(li, data, title=title, fields=fields, art=art,
                                             fan=fan or data.get('site_fanart') or os.path.join(root, 'fanart.jpg'),
