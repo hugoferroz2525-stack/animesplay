@@ -1,0 +1,37 @@
+name: Publicar AniPlay Experimental 2.7.41
+
+on:
+  create:
+  push:
+    branches: [experimental/v2.7.41-auditoria]
+    paths:
+      - AniPlay-2.7.41-experimental.zip
+      - .github/workflows/publicar-aniplay-experimental-2.7.41.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aniplay-experimental-2.7.41
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/experimental/v2.7.41-auditoria'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Verificar pacote e testes
+        run: |
+          sha256sum --check AniPlay-2.7.41-experimental.zip.sha256
+          python3 -m zipfile -t AniPlay-2.7.41-experimental.zip
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+      - name: Criar pré-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=v2.7.41-experimental
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release view "$tag" --json isPrerelease,assets --jq               '.isPrerelease and ([.assets[].name] | index("AniPlay-2.7.41-experimental.zip") != null)' | grep -qx true
+          else
+            gh release create "$tag" --target "$GITHUB_SHA" --prerelease               --title "AniPlay Experimental 2.7.41"               --notes-file TESTES-2.7.41.md               AniPlay-2.7.41-experimental.zip AniPlay-2.7.41-experimental.zip.sha256
+          fi

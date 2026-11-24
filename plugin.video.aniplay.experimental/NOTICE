@@ -1,0 +1,13 @@
+AniPlay incorpora e adapta módulos de AnimesPlay 1.6.15, OnePlay Team,
+sob a GNU General Public License v3. Consulte COPYING.
+A função get_image foi adaptada de lib/tmdb.py do Flix (i96751414, licença MIT em LICENSE-Flix).
+O índice de correspondências utiliza anime-offline-database de manami-project (ODbL 1.0 e DbCL 1.0;
+https://github.com/manami-project/anime-offline-database) e Fribb/anime-lists
+(https://github.com/Fribb/anime-lists). O índice derivado é disponibilizado sob ODbL 1.0.
+
+The format index in resources/data/catalog-formats.json uses exact title matches
+against anime-offline-database by manami-project. The format index is available
+under ODbL 1.0 with database contents under DbCL 1.0. See the accompanying license.
+https://github.com/manami-project/anime-offline-database
+
+The same ODbL and DbCL terms apply to catalog-durations.json and the expanded format index derived from anime-offline-database.

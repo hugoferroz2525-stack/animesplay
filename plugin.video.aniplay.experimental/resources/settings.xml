@@ -1,0 +1,32 @@
+<settings>
+  <category label="Metadados">
+    <setting id="cloud_cards" type="bool" label="Metadados do catálogo pela Cloudflare (experimental)" default="true" />
+    <setting id="token" type="text" option="hidden" label="TMDB — chave da API ou token de leitura" default="" />
+    <setting id="tmdb_language" type="labelenum" label="Idioma do TMDB" values="pt-BR|en-US|ja-JP|es-ES" default="pt-BR" />
+    <setting id="tmdb_days" type="number" label="Validade do cache TMDB em dias" default="7" />
+  </category>
+  <category label="Interface">
+    <setting id="poster_badges" type="bool" label="Exibir nota nas capas do TMDB (experimental)" default="true" />
+    <setting id="original_titles" type="bool" label="Preferir títulos originais" default="false" />
+    <setting id="keep_view" type="bool" label="Manter visualização na próxima página" default="false" />
+  </category>
+  <category label="Reprodução">
+    <setting id="skip_mode" type="labelenum" label="Pular abertura" values="Botão na tela|Automático|Desligado" default="Botão na tela" />
+    <setting id="skip_end" type="bool" label="Pular também o encerramento (AniSkip)" default="false" />
+    <setting id="remember_audio" type="bool" label="Lembrar áudio escolhido por anime" default="false" />
+  </category>
+  <category label="Legendas">
+    <setting id="external_subtitles" type="bool" label="Buscar legenda externa antes da reprodução" default="false" />
+    <setting id="subtitle_language" type="labelenum" label="Idioma no OpenSubtitles" values="pt-br|pt-pt|en|es" default="pt-br" />
+    <setting id="subtitle_key" type="text" option="hidden" label="OpenSubtitles.com — chave da API" default="" />
+    <setting id="subtitle_user" type="text" label="Usuário OpenSubtitles.com (opcional)" default="" />
+    <setting id="subtitle_password" type="text" option="hidden" label="Senha OpenSubtitles.com" default="" />
+  </category>
+  <category label="Biblioteca">
+    <setting id="library_path" type="folder" label="Pasta de exportação para o Kodi" default="" />
+  </category>
+  <category label="Manutenção">
+    <setting type="action" label="Limpar cache do TMDB" action="RunPlugin(plugin://plugin.video.aniplay.experimental/?action=purge&amp;scope=tmdb)" />
+    <setting type="action" label="Limpar cache de páginas" action="RunPlugin(plugin://plugin.video.aniplay.experimental/?action=purge&amp;scope=pages)" />
+  </category>
+</settings>

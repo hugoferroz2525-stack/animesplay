@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol always="true">10</defaultcontrol>
+	<animation effect="fade" time="200">WindowOpen</animation>
+	<animation effect="slide" start="80,0" end="0,0" time="250" tween="cubic" easing="out">WindowOpen</animation>
+	<animation effect="fade" time="200">WindowClose</animation>
+	<controls>
+		<control type="button" id="10">
+			<right>96</right>
+			<top>820</top>
+			<width>500</width>
+			<height>72</height>
+			<label>Pular abertura</label>
+			<font>font13</font>
+			<align>left</align>
+			<textoffsetx>62</textoffsetx>
+			<aligny>center</aligny>
+			<textcolor>FFFFFFFF</textcolor>
+			<focusedcolor>FFFFFFFF</focusedcolor>
+			<texturenofocus>skip-idle.png</texturenofocus>
+			<texturefocus>skip-focus.png</texturefocus>
+		</control>
+	</controls>
+</window>

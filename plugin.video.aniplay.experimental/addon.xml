@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<addon id="plugin.video.aniplay.experimental" name="[COLOR FFFFD32D][B]Ani[/B]Play Experimental[/COLOR]" version="2.7.41" provider-name="AniPlay">
+    <requires>
+        <import addon="xbmc.python" version="3.0.1" />
+        <import addon="script.module.pil" version="5.1.0" />
+        <import addon="inputstream.adaptive" version="20.0.0" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="pt_BR">Animes do Bakashi com informações do TMDB</summary>
+        <description lang="pt_BR">Explore animes do Bakashi por gênero, calendário ou elenco. Consulte fichas do TMDB, retome episódios e escolha o áudio disponível.</description>
+        <platform>all</platform>
+        <license>GPL-3.0</license>
+        <language>pt_BR</language>
+        <news>2.7.41 — Escolha explícita de áudio, diagnóstico de players e correções de identificação e episódios.</news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>resources/screenshots/menu.jpg</screenshot>
+        </assets>
+        <source>https://github.com/AstraMax6/ScalKairos/tree/feature/aniplay</source>
+    </extension>
+</addon>
