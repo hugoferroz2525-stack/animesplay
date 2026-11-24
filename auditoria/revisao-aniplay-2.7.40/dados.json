@@ -1,0 +1,2252 @@
+{
+  "identificação": {
+    "versao": "2.7.40",
+    "commit": "3f8a264122fdf9215e466c3d2d50704feff004b4",
+    "sha256": "979c96261a7cc1d41b5e6d732856a55226fa56809890dfe10a9a627b62533e10",
+    "Kodi": "21.2",
+    "addon_instalado": "2.7.37",
+    "skin": "skin.estuary",
+    "data_utc": "2026-11-24",
+    "arquivos_pacote": 98,
+    "diferenças": [
+      "addon.xml",
+      "aniplay/catalog_updates.py",
+      "aniplay/episode_order.py",
+      "aniplay/multisite.py",
+      "aniplay/navigation.py",
+      "aniplay/network.py",
+      "aniplay/playback.py",
+      "aniplay/providers/catalog.py",
+      "aniplay/providers/scraper.py",
+      "aniplay/views.py"
+    ],
+    "auditoria_catálogo": "3d9b14ffea0662617ad28bfd35f23d3830268e65",
+    "capturas_Kodi": []
+  },
+  "rede_por_fonte": {
+    "bakashi": [
+      {
+        "obra": "https://bakashi.top/anime/naruto-shippuden-1a-temporada",
+        "titulo": "Naruto Shippuden",
+        "lista": {
+          "frio": {
+            "itens": 50,
+            "origem": "rede",
+            "s": 1.743
+          },
+          "segunda_abertura": {
+            "itens": 50,
+            "origem": "cache",
+            "s": 0.072
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://bakashi.top/ep/naruto-shippuden-1-episodio-1",
+            "rótulo_auditoria": "Ver Naruto Shippuden 1",
+            "resoluções": [
+              {
+                "áudio_no_player": "Dublado",
+                "opção": "",
+                "validada": false,
+                "erro": {
+                  "classe": "ValueError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "indisponível"
+                  ]
+                }
+              },
+              {
+                "áudio_no_player": "Legendado",
+                "opção": "",
+                "mime": "application/vnd.apple.mpegurl",
+                "validada": true
+              }
+            ],
+            "Kodi_iniciou": null,
+            "página_abriu": true,
+            "título_página": "Episodio 1",
+            "s": 7.998
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://bakashi.top/ep/naruto-shippuden-1-episodio-500",
+            "rótulo_auditoria": "Ver Naruto Shippuden 500",
+            "resoluções": [
+              {
+                "áudio_no_player": "Legendado",
+                "opção": "",
+                "mime": "application/vnd.apple.mpegurl",
+                "validada": true
+              }
+            ],
+            "Kodi_iniciou": null,
+            "página_abriu": true,
+            "título_página": "Episodio 500",
+            "s": 5.491
+          }
+        ]
+      },
+      {
+        "obra": "https://bakashi.top/anime/one-piece-1a-temporada",
+        "titulo": "One Piece",
+        "lista": {
+          "frio": {
+            "itens": 50,
+            "origem": "rede",
+            "s": 1.582
+          },
+          "segunda_abertura": {
+            "itens": 50,
+            "origem": "cache",
+            "s": 0.027
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://bakashi.top/ep/one-piece-1-episodio-1",
+            "rótulo_auditoria": "Ver One Piece 1",
+            "resoluções": [
+              {
+                "áudio_no_player": "Legendado",
+                "opção": "",
+                "mime": "application/vnd.apple.mpegurl",
+                "validada": true
+              }
+            ],
+            "Kodi_iniciou": null,
+            "página_abriu": true,
+            "título_página": "Episodio 1",
+            "s": 5.529
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://bakashi.top/ep/one-piece-1-episodio-1180",
+            "rótulo_auditoria": "Ver One Piece 1180",
+            "resoluções": [
+              {
+                "áudio_no_player": "Legendado",
+                "opção": "",
+                "mime": "application/vnd.apple.mpegurl",
+                "validada": true
+              }
+            ],
+            "Kodi_iniciou": null,
+            "página_abriu": true,
+            "título_página": "Episodio 1180",
+            "s": 5.254
+          }
+        ]
+      },
+      {
+        "obra": "https://bakashi.top/anime/one-piece-dublado-1a-temporada",
+        "titulo": "One Piece Dublado",
+        "lista": {
+          "frio": {
+            "itens": 50,
+            "origem": "rede",
+            "s": 3.604
+          },
+          "segunda_abertura": {
+            "itens": 50,
+            "origem": "cache",
+            "s": 0.043
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://bakashi.top/ep/one-piece-dublado-1-episodio-1",
+            "rótulo_auditoria": "Ver One Piece Dublado 1",
+            "resoluções": [
+              {
+                "áudio_no_player": "Dublado",
+                "opção": "",
+                "mime": "application/vnd.apple.mpegurl",
+                "validada": true
+              }
+            ],
+            "Kodi_iniciou": null,
+            "página_abriu": true,
+            "título_página": "Episodio 1",
+            "s": 5.194
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://bakashi.top/ep/one-piece-dublado-1-episodio-891",
+            "rótulo_auditoria": "Ver One Piece Dublado 891",
+            "resoluções": [
+              {
+                "áudio_no_player": "Dublado",
+                "opção": "",
+                "mime": "application/vnd.apple.mpegurl",
+                "validada": true
+              }
+            ],
+            "Kodi_iniciou": null,
+            "página_abriu": true,
+            "título_página": "Episodio 891",
+            "s": 4.918
+          }
+        ]
+      }
+    ],
+    "hinatasoul": [
+      {
+        "obra": "https://www.hinatasoul.com/anime-dublado/7804b6bdda34932920657ba29e64025244f485c7",
+        "titulo": "One Piece - Dublado",
+        "lista": {
+          "frio": {
+            "itens": 24,
+            "origem": "rede",
+            "s": 2.277
+          },
+          "segunda_abertura": {
+            "itens": 24,
+            "origem": "cache",
+            "s": 0.045
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://www.hinatasoul.com/videos/492294",
+            "rótulo_auditoria": "Episódio 01",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 360
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [
+                    404
+                  ],
+                  "codigo": null,
+                  "motivos": [
+                    "indisponível"
+                  ]
+                }
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "One Piece - Dublado ep 1",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 32.745
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://www.hinatasoul.com/videos/557129",
+            "rótulo_auditoria": "Episódio 849",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 480
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 1080
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "One Piece - Dublado ep 849",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 33.858
+          }
+        ]
+      },
+      {
+        "obra": "https://www.hinatasoul.com/animes/e1eaa4181415abd4e16cce073629ee329ebd3200",
+        "titulo": "One Piece",
+        "lista": {
+          "frio": {
+            "itens": 24,
+            "origem": "rede",
+            "s": 1.732
+          },
+          "segunda_abertura": {
+            "itens": 24,
+            "origem": "cache",
+            "s": 0.049
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://www.hinatasoul.com/videos/509115",
+            "rótulo_auditoria": "Episódio 01",
+            "resoluções": [
+              {
+                "opção": "360p",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 360
+              },
+              {
+                "opção": "720p",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "1080p",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 1080
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "One Piece ep 1",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "360p",
+              "720p",
+              "1080p"
+            ],
+            "s": 30.923
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://www.hinatasoul.com/videos/580081",
+            "rótulo_auditoria": "Episódio 1180",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 480
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 1080
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "One Piece ep 1180",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 32.974
+          }
+        ]
+      }
+    ],
+    "anitube22": [
+      {
+        "obra": "https://www.anitube22.vip/animes-dublado/7804b6bdda34932920657ba29e64025244f485c7",
+        "titulo": "One Piece - Dublado",
+        "lista": {
+          "frio": {
+            "itens": 24,
+            "origem": "rede",
+            "s": 1.889
+          },
+          "segunda_abertura": {
+            "itens": 24,
+            "origem": "cache",
+            "s": 0.051
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://www.anitube22.vip/video/492294",
+            "rótulo_auditoria": "One Piece - Dublado ep 1",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 2",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 3",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece - Dublado ep 1 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 9.193
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://www.anitube22.vip/video/557129",
+            "rótulo_auditoria": "One Piece - Dublado ep 849",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 2",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 3",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece - Dublado ep 849 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 9.584
+          }
+        ]
+      },
+      {
+        "obra": "https://www.anitube22.vip/anime/e1eaa4181415abd4e16cce073629ee329ebd3200",
+        "titulo": "One Piece",
+        "lista": {
+          "frio": {
+            "itens": 24,
+            "origem": "rede",
+            "s": 2.131
+          },
+          "segunda_abertura": {
+            "itens": 24,
+            "origem": "cache",
+            "s": 0.05
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://www.anitube22.vip/video/509115",
+            "rótulo_auditoria": "One Piece ep 1",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 2",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 3",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece ep 1 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 9.061
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://www.anitube22.vip/video/580081",
+            "rótulo_auditoria": "One Piece ep 1180",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 2",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              },
+              {
+                "opção": "Player 3",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [],
+                  "codigo": null,
+                  "motivos": [
+                    "mídia ausente"
+                  ]
+                }
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece ep 1180 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 9.149
+          }
+        ]
+      }
+    ],
+    "anitube": [
+      {
+        "obra": "https://www.anitube.vip/animes-dublado/7804b6bdda34932920657ba29e64025244f485c7",
+        "titulo": "One Piece - Dublado",
+        "lista": {
+          "frio": {
+            "itens": 24,
+            "origem": "rede",
+            "s": 2.079
+          },
+          "segunda_abertura": {
+            "itens": 24,
+            "origem": "cache",
+            "s": 0.044
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://www.anitube.vip/video/492294",
+            "rótulo_auditoria": "One Piece - Dublado ep 1",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 360
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": false,
+                "erro": {
+                  "classe": "ScraperError",
+                  "http": [
+                    404
+                  ],
+                  "codigo": null,
+                  "motivos": [
+                    "indisponível"
+                  ]
+                }
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece - Dublado ep 1 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 34.141
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://www.anitube.vip/video/557129",
+            "rótulo_auditoria": "One Piece - Dublado ep 849",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 480
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 1080
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece - Dublado ep 849 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 31.942
+          }
+        ]
+      },
+      {
+        "obra": "https://www.anitube.vip/anime/e1eaa4181415abd4e16cce073629ee329ebd3200",
+        "titulo": "One Piece",
+        "lista": {
+          "frio": {
+            "itens": 24,
+            "origem": "rede",
+            "s": 1.761
+          },
+          "segunda_abertura": {
+            "itens": 24,
+            "origem": "cache",
+            "s": 0.052
+          }
+        },
+        "episodios": [
+          {
+            "posição": "inicial",
+            "url_pública": "https://www.anitube.vip/video/509115",
+            "rótulo_auditoria": "One Piece ep 1",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 360
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 1080
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece ep 1 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 29.439
+          },
+          {
+            "posição": "recente",
+            "url_pública": "https://www.anitube.vip/video/580081",
+            "rótulo_auditoria": "One Piece ep 1180",
+            "resoluções": [
+              {
+                "opção": "Player 1",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 480
+              },
+              {
+                "opção": "Player 2",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 720
+              },
+              {
+                "opção": "Player 3",
+                "validada": true,
+                "http_mídia": 206,
+                "mime": "video/mp4",
+                "altura_medida": 1080
+              }
+            ],
+            "Kodi_iniciou": null,
+            "título_página": "Assistir One Piece ep 1180 - Anitube",
+            "página_abriu": true,
+            "opções_anunciadas": [
+              "Player 1",
+              "Player 2",
+              "Player 3"
+            ],
+            "s": 31.623
+          }
+        ]
+      }
+    ]
+  },
+  "tempos": [
+    {
+      "teste": "busca One Piece nas quatro fontes · fria",
+      "s": 6.5653,
+      "itens": 181
+    },
+    {
+      "teste": "busca One Piece nas quatro fontes · reabertura",
+      "s": 1.3439,
+      "itens": 181
+    },
+    {
+      "teste": "Naruto Shippuden dublado HinataSoul · fria",
+      "s": 33.8321,
+      "itens": 309
+    },
+    {
+      "teste": "Naruto Shippuden dublado HinataSoul · reabertura",
+      "s": 0.0026,
+      "itens": 309
+    },
+    {
+      "teste": "Worker · tv/137390 · fria",
+      "s": 1.744,
+      "itens": 1
+    },
+    {
+      "teste": "Worker · tv/137390 · reabertura",
+      "s": 0.004,
+      "itens": 1
+    }
+  ],
+  "eventos_do_dublê": {
+    "N01 menus e configuração": {
+      "resultado": {
+        "home": [
+          {
+            "label": "Continuar assistindo",
+            "rota": "continue",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Continuar assistindo"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Assistidos",
+            "rota": "watched",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Assistidos"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Minha lista",
+            "rota": "favorites",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Minha lista"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Histórico de reprodução",
+            "rota": "recent",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Histórico de reprodução"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Lançamentos",
+            "rota": "latest",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Lançamentos"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Catálogo de animes",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Catálogo de animes"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Em alta no Bakashi",
+            "rota": "trending",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Em alta no Bakashi"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Explorar por filtro",
+            "rota": "filters",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Explorar por filtro"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Buscar e ver histórico",
+            "rota": "search",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Buscar e ver histórico"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Calendário de lançamentos",
+            "rota": "calendar",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Calendário de lançamentos"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Configurações",
+            "rota": "settings",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Configurações"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "search": [
+          {
+            "label": "Nova busca",
+            "rota": "prompt",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Nova busca"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Buscar pessoa",
+            "rota": "person_prompt",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Buscar pessoa"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "filters": [
+          {
+            "label": "Gênero",
+            "rota": "filter",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Gênero"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Formato",
+            "rota": "filter",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Formato"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Ano",
+            "rota": "filter",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Ano"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Status",
+            "rota": "filter",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Status"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "continue": [
+          {
+            "label": "Escolher um episódio",
+            "rota": "latest",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Escolher um episódio"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "watched": [
+          {
+            "label": "Escolher um episódio",
+            "rota": "latest",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Escolher um episódio"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "recent": [
+          {
+            "label": "Escolher o primeiro episódio",
+            "rota": "latest",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Escolher o primeiro episódio"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "favorites": [
+          {
+            "label": "Salvar animes pelo menu de contexto · Abrir catálogo",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "Salvar animes pelo menu de contexto · Abrir catálogo"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "settings": [],
+        "configurações_abriu": [
+          true
+        ]
+      },
+      "s": 0.1006
+    },
+    "N02 filtros, lançamentos e calendário com respostas arquivadas": {
+      "resultado": {
+        "filtro_formato": [
+          {
+            "label": "TV Anime",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/lista-de-animes?type=tv",
+            "tag_título": [
+              "TV Anime"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Filme",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/lista-de-animes?type=movie",
+            "tag_título": [
+              "Filme"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "OVA",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/lista-de-animes?type=ova",
+            "tag_título": [
+              "OVA"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "ONA",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/lista-de-animes?type=ona",
+            "tag_título": [
+              "ONA"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "Especial",
+            "rota": "catalog",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/lista-de-animes?type=special",
+            "tag_título": [
+              "Especial"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "lançamentos": [
+          {
+            "label": "My Girlfriends Friend · Episódio 08",
+            "rota": "play",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/ep/my-girlfriends-friend-1-episodio-8",
+            "tag_título": [
+              "My Girlfriends Friend · Episódio 08"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": [
+              8
+            ],
+            "tag_tipo": [
+              "episode"
+            ],
+            "contexto": [
+              "Ajustar abertura deste episódio"
+            ],
+            "props": {
+              "IsPlayable": "true"
+            }
+          },
+          {
+            "label": "Hello, I am a Witch and my Crush Wants me to Make a Love Potion! · Episódio 08",
+            "rota": "play",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/ep/hello-i-am-a-witch-and-my-crush-wants-me-to-make-a-love-potion-1-episodio-8",
+            "tag_título": [
+              "Hello, I am a Witch and my Crush Wants me to Make a Love Potion! · Episódio 08"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": [
+              8
+            ],
+            "tag_tipo": [
+              "episode"
+            ],
+            "contexto": [
+              "Ajustar abertura deste episódio"
+            ],
+            "props": {
+              "IsPlayable": "true"
+            }
+          },
+          {
+            "label": "So What's Wrong with Getting Reborn as a Goblin? · Episódio 08",
+            "rota": "play",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/ep/so-what-s-wrong-with-getting-reborn-as-a-goblin-1-episodio-8",
+            "tag_título": [
+              "So What's Wrong with Getting Reborn as a Goblin? · Episódio 08"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": [
+              8
+            ],
+            "tag_tipo": [
+              "episode"
+            ],
+            "contexto": [
+              "Ajustar abertura deste episódio"
+            ],
+            "props": {
+              "IsPlayable": "true"
+            }
+          }
+        ],
+        "calendário": [
+          {
+            "label": "[COLOR FFFFD32D]Sexta-feira[/COLOR] · 15/01 (1)",
+            "rota": "calendar_day",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "[COLOR FFFFD32D]Sexta-feira[/COLOR] · 15/01 (1)"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": null,
+            "contexto": [],
+            "props": {}
+          }
+        ]
+      },
+      "s": 0.2237
+    },
+    "N03 áudio filtra servidores e entrada desconhecida": {
+      "resultado": {
+        "edições": [
+          {
+            "label": "[COLOR FFFFD32D]Dublado[/COLOR]  [COLOR FFFFD32D]★ 8.5[/COLOR]",
+            "rota": "multi_servers",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "[COLOR FFFFD32D]Dublado[/COLOR]"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "tvshow"
+            ],
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "[COLOR FFFFD32D]Legendado[/COLOR]  [COLOR FFFFD32D]★ 8.5[/COLOR]",
+            "rota": "multi_servers",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "[COLOR FFFFD32D]Legendado[/COLOR]"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "tvshow"
+            ],
+            "contexto": [],
+            "props": {}
+          },
+          {
+            "label": "[COLOR FFFFD32D]Áudio não informado[/COLOR]  [COLOR FFFFD32D]★ 8.5[/COLOR]",
+            "rota": "multi_servers",
+            "temporada": null,
+            "local": null,
+            "url": null,
+            "tag_título": [
+              "[COLOR FFFFD32D]Áudio não informado[/COLOR]"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "tvshow"
+            ],
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "desconhecida": [
+          {
+            "label": "[COLOR FFFFD32D]Servidor 1[/COLOR]",
+            "rota": "multi_seasons",
+            "temporada": null,
+            "local": null,
+            "url": "https://www.anitube.vip/anime/teste",
+            "tag_título": [
+              "[COLOR FFFFD32D]Servidor 1[/COLOR]"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "tvshow"
+            ],
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "dublado": [
+          {
+            "label": "[COLOR FFFFD32D]Servidor 1[/COLOR]",
+            "rota": "multi_seasons",
+            "temporada": null,
+            "local": null,
+            "url": "https://www.hinatasoul.com/anime-dublado/teste",
+            "tag_título": [
+              "[COLOR FFFFD32D]Servidor 1[/COLOR]"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "tvshow"
+            ],
+            "contexto": [],
+            "props": {}
+          }
+        ],
+        "legendado": [
+          {
+            "label": "[COLOR FFFFD32D]Servidor 1[/COLOR]",
+            "rota": "multi_seasons",
+            "temporada": null,
+            "local": null,
+            "url": "https://www.anitube22.vip/anime/teste",
+            "tag_título": [
+              "[COLOR FFFFD32D]Servidor 1[/COLOR]"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "tvshow"
+            ],
+            "contexto": [],
+            "props": {}
+          }
+        ]
+      },
+      "s": 0.0317
+    },
+    "G01 agrupador no catálogo da auditoria": {
+      "resultado": {
+        "Digimon": [
+          {
+            "tv:98034": [
+              {
+                "site": "Bakashi",
+                "title": "Digimon Adventure",
+                "url": "https://bakashi.top/anime/digimon-adventure-1a-temporada",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "Bakashi",
+                "title": "Digimon Adventure (2020)",
+                "url": "https://bakashi.top/anime/digimon-adventure-2020-1a-temporada",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "HinataSoul",
+                "title": "Digimon Adventure",
+                "url": "https://www.hinatasoul.com/animes/3ffe62e3b6aac35030469cf85cec7fd55bf2b726",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube22",
+                "title": "Digimon Adventure",
+                "url": "https://www.anitube22.vip/anime/3ffe62e3b6aac35030469cf85cec7fd55bf2b726",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube",
+                "title": "Digimon Adventure",
+                "url": "https://www.anitube.vip/anime/3ffe62e3b6aac35030469cf85cec7fd55bf2b726",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              }
+            ]
+          }
+        ],
+        "Birdie Wing": [
+          {
+            "tv:137390": [
+              {
+                "site": "Bakashi",
+                "title": "Birdie Wing -Golf Girls' Story-",
+                "url": "https://bakashi.top/anime/birdie-wing-golf-girls-story-1a-temporada",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "HinataSoul",
+                "title": "Birdie Wing: Golf Girls' Story",
+                "url": "https://www.hinatasoul.com/animes/birdie-wing-golf-girls-story",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "HinataSoul",
+                "title": "Birdie Wing: Golf Girls' Story Season 2",
+                "url": "https://www.hinatasoul.com/animes/birdie-wing-golf-girls-story-season-2",
+                "imagem": "",
+                "audio": "",
+                "season": 2
+              },
+              {
+                "site": "AniTube22",
+                "title": "Birdie Wing: Golf Girls' Story",
+                "url": "https://www.anitube22.vip/anime/birdie-wing-golf-girls-story",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube22",
+                "title": "Birdie Wing: Golf Girls' Story Season 2",
+                "url": "https://www.anitube22.vip/anime/birdie-wing-golf-girls-story-season-2",
+                "imagem": "",
+                "audio": "",
+                "season": 2
+              },
+              {
+                "site": "AniTube",
+                "title": "Birdie Wing: Golf Girls' Story",
+                "url": "https://www.anitube.vip/anime/birdie-wing-golf-girls-story",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube",
+                "title": "Birdie Wing: Golf Girls' Story Season 2",
+                "url": "https://www.anitube.vip/anime/birdie-wing-golf-girls-story-season-2",
+                "imagem": "",
+                "audio": "",
+                "season": 2
+              }
+            ]
+          }
+        ],
+        "Slime": [
+          {
+            "title:tensei shitara slime datta ken": [
+              {
+                "site": "HinataSoul",
+                "title": "Tensei shitara Slime Datta Ken 2nd Season",
+                "url": "https://www.hinatasoul.com/animes/b6146d534fea1df93fb331751c95534c561b29bd",
+                "imagem": "",
+                "audio": "",
+                "season": 2
+              },
+              {
+                "site": "AniTube22",
+                "title": "Tensei shitara Slime Datta Ken 2nd Season",
+                "url": "https://www.anitube22.vip/anime/b6146d534fea1df93fb331751c95534c561b29bd",
+                "imagem": "",
+                "audio": "",
+                "season": 2
+              },
+              {
+                "site": "AniTube",
+                "title": "Tensei shitara Slime Datta Ken 2nd Season",
+                "url": "https://www.anitube.vip/anime/b6146d534fea1df93fb331751c95534c561b29bd",
+                "imagem": "",
+                "audio": "",
+                "season": 2
+              }
+            ]
+          },
+          {
+            "title:tensei shitara slime datta ken 2nd season part 2": [
+              {
+                "site": "HinataSoul",
+                "title": "Tensei shitara Slime Datta Ken 2nd Season Part 2",
+                "url": "https://www.hinatasoul.com/animes/aaf08754be3b5dab97813591436ce7954c7c182c",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube22",
+                "title": "Tensei shitara Slime Datta Ken 2nd Season Part 2",
+                "url": "https://www.anitube22.vip/anime/aaf08754be3b5dab97813591436ce7954c7c182c",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube",
+                "title": "Tensei shitara Slime Datta Ken 2nd Season Part 2",
+                "url": "https://www.anitube.vip/anime/aaf08754be3b5dab97813591436ce7954c7c182c",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              }
+            ]
+          }
+        ],
+        "Cosmos": [
+          {
+            "title:bishoujo senshi sailor moon cosmos movie": [
+              {
+                "site": "HinataSoul",
+                "title": "Bishoujo Senshi Sailor Moon Cosmos Movie",
+                "url": "https://www.hinatasoul.com/animes/bishoujo-senshi-sailor-moon-cosmos-movie",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube22",
+                "title": "Bishoujo Senshi Sailor Moon Cosmos Movie",
+                "url": "https://www.anitube22.vip/anime/bishoujo-senshi-sailor-moon-cosmos-movie",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              },
+              {
+                "site": "AniTube",
+                "title": "Bishoujo Senshi Sailor Moon Cosmos Movie",
+                "url": "https://www.anitube.vip/anime/bishoujo-senshi-sailor-moon-cosmos-movie",
+                "imagem": "",
+                "audio": "",
+                "season": null
+              }
+            ]
+          }
+        ]
+      },
+      "s": 0.3937
+    },
+    "G02 números repetidos e lacunas com episódios reais arquivados": {
+      "resultado": {
+        "HinataSoul One Piece - Dublado": {
+          "ids": 842,
+          "números_repetidos": [
+            "30",
+            "50",
+            "611",
+            "612",
+            "613"
+          ],
+          "cards_sem_tmdb": 837,
+          "cards_com_disputa_mesmo_áudio": 5
+        },
+        "HinataSoul Naruto Shippuden - Dublado": {
+          "ids": 309,
+          "números_repetidos": [],
+          "cards_sem_tmdb": 309,
+          "cards_com_disputa_mesmo_áudio": 0
+        },
+        "HinataSoul One Piece": {
+          "ids": 1185,
+          "números_repetidos": [
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "1088",
+            "1092",
+            "1100",
+            "1108",
+            "1129",
+            "1133",
+            "1141",
+            "1145",
+            "1150"
+          ],
+          "cards_sem_tmdb": 1171,
+          "cards_com_disputa_mesmo_áudio": 14
+        },
+        "HinataSoul Naruto Shippuden": {
+          "ids": 476,
+          "números_repetidos": [
+            "20",
+            "50",
+            "471"
+          ],
+          "cards_sem_tmdb": 473,
+          "cards_com_disputa_mesmo_áudio": 3
+        },
+        "AniTube22 One Piece - Dublado": {
+          "ids": 842,
+          "números_repetidos": [
+            "611",
+            "612",
+            "613"
+          ],
+          "cards_sem_tmdb": 839,
+          "cards_com_disputa_mesmo_áudio": 3
+        },
+        "AniTube22 Naruto Shippuden - Dublado": {
+          "ids": 309,
+          "números_repetidos": [],
+          "cards_sem_tmdb": 309,
+          "cards_com_disputa_mesmo_áudio": 0
+        },
+        "AniTube22 One Piece": {
+          "ids": 1185,
+          "números_repetidos": [
+            "1100",
+            "1108",
+            "1128",
+            "1145"
+          ],
+          "cards_sem_tmdb": 1181,
+          "cards_com_disputa_mesmo_áudio": 4
+        },
+        "AniTube22 Naruto Shippuden": {
+          "ids": 476,
+          "números_repetidos": [
+            "471"
+          ],
+          "cards_sem_tmdb": 475,
+          "cards_com_disputa_mesmo_áudio": 1
+        },
+        "AniTube One Piece - Dublado": {
+          "ids": 842,
+          "números_repetidos": [
+            "611",
+            "612",
+            "613"
+          ],
+          "cards_sem_tmdb": 839,
+          "cards_com_disputa_mesmo_áudio": 3
+        },
+        "AniTube Naruto Shippuden - Dublado": {
+          "ids": 309,
+          "números_repetidos": [],
+          "cards_sem_tmdb": 309,
+          "cards_com_disputa_mesmo_áudio": 0
+        },
+        "AniTube One Piece": {
+          "ids": 1185,
+          "números_repetidos": [
+            "1100",
+            "1108",
+            "1128",
+            "1145"
+          ],
+          "cards_sem_tmdb": 1181,
+          "cards_com_disputa_mesmo_áudio": 4
+        },
+        "AniTube Naruto Shippuden": {
+          "ids": 476,
+          "números_repetidos": [
+            "471"
+          ],
+          "cards_sem_tmdb": 475,
+          "cards_com_disputa_mesmo_áudio": 1
+        }
+      },
+      "s": 0.7089
+    },
+    "G03 navegação temporada e episódio de Birdie Wing 13+12": {
+      "resultado": {
+        "temporadas": [
+          {
+            "label": "Temporada 1 (13)",
+            "rota": "multi_episodes",
+            "temporada": "1",
+            "local": null,
+            "url": "https://www.hinatasoul.com/animes/birdie-wing-golf-girls-story",
+            "tag_título": [
+              "Temporada 1"
+            ],
+            "tag_temporada": [
+              1
+            ],
+            "tag_episódio": null,
+            "tag_tipo": [
+              "season"
+            ],
+            "contexto": [],
+            "props": {
+              "TotalEpisodes": "13",
+              "WatchedEpisodes": "0",
+              "UnWatchedEpisodes": "13",
+              "AniPlay.SeasonProgress": "0 de 13 vistos",
+              "AniPlay.SeasonPercent": "0"
+            }
+          },
+          {
+            "label": "Temporada 2 (12)",
+            "rota": "multi_episodes",
+            "temporada": "2",
+            "local": null,
+            "url": "https://www.hinatasoul.com/animes/birdie-wing-golf-girls-story",
+            "tag_título": [
+              "Temporada 2"
+            ],
+            "tag_temporada": [
+              2
+            ],
+            "tag_episódio": null,
+            "tag_tipo": [
+              "season"
+            ],
+            "contexto": [],
+            "props": {
+              "TotalEpisodes": "12",
+              "WatchedEpisodes": "0",
+              "UnWatchedEpisodes": "12",
+              "AniPlay.SeasonProgress": "0 de 12 vistos",
+              "AniPlay.SeasonPercent": "0"
+            }
+          }
+        ],
+        "primeiro_card_segundo_bloco": [
+          {
+            "label": "Episódio 01",
+            "rota": "play",
+            "temporada": "2",
+            "local": "1",
+            "url": "https://www.hinatasoul.com/videos/201",
+            "tag_título": [
+              "Episódio 01"
+            ],
+            "tag_temporada": [
+              2
+            ],
+            "tag_episódio": [
+              1
+            ],
+            "tag_tipo": [
+              "episode"
+            ],
+            "contexto": [
+              "Trailer",
+              "Ajustar abertura deste episódio"
+            ],
+            "props": {
+              "IsPlayable": "true"
+            }
+          }
+        ],
+        "temporada_TMDb_pedida": 2
+      },
+      "s": 0.1234
+    },
+    "M01 VideoInfoTag, ficha, imagem e metadados em japonês": {
+      "resultado": {
+        "tvshow": {
+          "setTitle": [
+            "Naruto Shippuden"
+          ],
+          "setPlot": [
+            "Sinopse com ação"
+          ],
+          "setOriginalTitle": [
+            "ナルト 疾風伝"
+          ],
+          "setPremiered": [
+            "2007-02-15"
+          ],
+          "setDuration": [
+            1440
+          ],
+          "setYear": [
+            2007
+          ],
+          "setMediaType": [
+            "tvshow"
+          ],
+          "setSortTitle": [
+            "Naruto Shippuden"
+          ],
+          "setRating": [
+            8.5,
+            100,
+            "tmdb",
+            true
+          ],
+          "setUniqueIDs": [
+            {
+              "tmdb": "31910"
+            },
+            "tmdb"
+          ],
+          "addSeason": [
+            1,
+            "Arco 1"
+          ],
+          "setCast": [
+            [
+              [
+                "Junko Takeuchi",
+                "Naruto (voice)",
+                0,
+                "https://image.tmdb.org/t/p/w342/fixture.jpg"
+              ]
+            ]
+          ]
+        },
+        "arte": [
+          {
+            "thumb": "https://image.tmdb.org/t/p/w500/fixture.jpg",
+            "poster": "https://image.tmdb.org/t/p/w500/fixture.jpg"
+          }
+        ],
+        "episódio": {
+          "label": "Episódio 1 · [COLOR FFFFD32D]Começo[/COLOR]",
+          "rota": "play",
+          "temporada": "1",
+          "local": "1",
+          "url": "https://www.hinatasoul.com/videos/123",
+          "tag_título": [
+            "Episódio 1 · [COLOR FFFFD32D]Começo[/COLOR]"
+          ],
+          "tag_temporada": [
+            1
+          ],
+          "tag_episódio": [
+            1
+          ],
+          "tag_tipo": [
+            "episode"
+          ],
+          "contexto": [
+            "Ajustar abertura deste episódio"
+          ],
+          "props": {
+            "IsPlayable": "true"
+          }
+        },
+        "episódio_tag": {
+          "setTitle": [
+            "Episódio 1 · [COLOR FFFFD32D]Começo[/COLOR]"
+          ],
+          "setPremiered": [
+            "2007-02-15"
+          ],
+          "setDuration": [
+            1440
+          ],
+          "setYear": [
+            2007
+          ],
+          "setMediaType": [
+            "episode"
+          ],
+          "setTvShowTitle": [
+            "Naruto Shippuden"
+          ],
+          "setSeason": [
+            1
+          ],
+          "setEpisode": [
+            1
+          ],
+          "setFirstAired": [
+            "2007-02-15"
+          ],
+          "setSortTitle": [
+            "Episódio 1 · Começo"
+          ],
+          "setSortSeason": [
+            1
+          ],
+          "setSortEpisode": [
+            1
+          ],
+          "setUniqueIDs": [
+            {
+              "tmdb": "123"
+            },
+            "tmdb"
+          ]
+        },
+        "episódio_arte": [
+          {
+            "icon": "https://image.tmdb.org/t/p/w780/fixture.jpg",
+            "thumb": "https://image.tmdb.org/t/p/w780/fixture.jpg",
+            "poster": "https://image.tmdb.org/t/p/w780/fixture.jpg",
+            "fanart": "[arquivo local]"
+          }
+        ]
+      },
+      "s": 0.0014
+    },
+    "P01 cancelamento qualidade, falha e retomada": {
+      "resultado": {
+        "cancelamento": {
+          "resolução_entregue": [
+            false
+          ],
+          "tentou_player": false,
+          "diálogos": [
+            [
+              "Qualidade ou player · HinataSoul",
+              [
+                "[COLOR FFFFD32D]720p[/COLOR]",
+                "[COLOR FFFFD32D]1080p[/COLOR]"
+              ]
+            ]
+          ],
+          "avisos": null
+        },
+        "falha": {
+          "resolução_entregue": [
+            false
+          ],
+          "tentou_player": false,
+          "diálogos": null,
+          "avisos": [
+            [
+              "[COLOR FFFFD32D]HinataSoul[/COLOR]",
+              "HTTP 404 indisponível"
+            ]
+          ]
+        },
+        "retomada_cancelada": [
+          false
+        ],
+        "menu_retomada": [
+          [
+            "Reprodução",
+            [
+              "Continuar de 0:15",
+              "Ver desde o início"
+            ]
+          ]
+        ]
+      },
+      "s": 0.111
+    },
+    "C01 frio, cache quente, vencimento, offline, limpeza e proteção do progresso": {
+      "resultado": {
+        "origens": [
+          "rede",
+          "cache",
+          "cache_antigo",
+          "falha_cache_frio"
+        ],
+        "menos_de_10s": 0,
+        "retomada": 25.0,
+        "tabelas_após_limpar": [
+          0,
+          0
+        ],
+        "favorito_preservado": true,
+        "progresso_preservado": 25.0,
+        "visto_após_90pct": true,
+        "menu_progresso": [
+          {
+            "label": "Teste",
+            "rota": "play",
+            "temporada": null,
+            "local": null,
+            "url": "https://bakashi.top/ep/teste",
+            "tag_título": [
+              "Teste"
+            ],
+            "tag_temporada": null,
+            "tag_episódio": null,
+            "tag_tipo": [
+              "episode"
+            ],
+            "contexto": [
+              "Ajustar abertura deste episódio"
+            ],
+            "props": {
+              "IsPlayable": "true"
+            }
+          }
+        ]
+      },
+      "s": 0.5731
+    }
+  },
+  "verificações_adicionais": {
+    "lançamentos": {
+      "s": 1.158,
+      "origem": "rede",
+      "itens": 16
+    },
+    "calendário": {
+      "s": 1.179,
+      "origem": "rede",
+      "dias": 8,
+      "itens": 137
+    },
+    "Worker": {
+      "tv/137390": {
+        "id": 137390,
+        "tipo": "tv",
+        "nome": "Birdie Wing -Golf Girls' Story-",
+        "original": "BIRDIE WING -Golf Girls' Story-",
+        "data": "2022-04-06",
+        "duração_min": [
+          24
+        ],
+        "nota": 6.583,
+        "sinopse": true,
+        "pôster": true,
+        "miniatura": false,
+        "elenco": 17,
+        "temporadas": 1
+      },
+      "movie/968868": {
+        "id": 968868,
+        "tipo": "movie",
+        "nome": "Pretty Guardian Sailor Moon Cosmos: O Filme – Parte 1",
+        "original": "劇場版 美少女戦士セーラームーンCosmos 前編",
+        "data": "2023-06-09",
+        "duração_min": 81,
+        "nota": 7.4,
+        "sinopse": true,
+        "pôster": true,
+        "miniatura": false,
+        "elenco": 29,
+        "temporadas": 0
+      },
+      "movie/968870": {
+        "id": 968870,
+        "tipo": "movie",
+        "nome": "Pretty Guardian Sailor Moon Cosmos: O Filme – Parte 2",
+        "original": "劇場版 美少女戦士セーラームーンCosmos 後編",
+        "data": "2023-06-30",
+        "duração_min": 82,
+        "nota": 8,
+        "sinopse": true,
+        "pôster": true,
+        "miniatura": false,
+        "elenco": 17,
+        "temporadas": 0
+      }
+    },
+    "API TMDB sem chave": {
+      "http": 401,
+      "classe": "HTTPError"
+    },
+    "fallback_áudio_explícito": {
+      "pedido": "Dublado",
+      "enviado": "Legendado",
+      "diálogo": false
+    },
+    "Pillow_no_Termux": false,
+    "comparação_tag_ficha": {
+      "título_lista": [
+        "Episódio 01 · [COLOR FFFFD32D]Épisode 青い空[/COLOR]"
+      ],
+      "título_ficha": [
+        "Épisode 青い空"
+      ],
+      "número_lista": [
+        1
+      ],
+      "número_ficha": [
+        1
+      ],
+      "ordenacao_lista": [
+        "Episódio 01 · Épisode 青い空"
+      ]
+    },
+    "Cosmos_com_metadado_filme_parte_1": {
+      "temporadas": [
+        1
+      ],
+      "episódios_na_temporada_1": 2
+    }
+  },
+  "contrato_cache_e_selo": {
+    "cold": {
+      "id": 31910,
+      "origem": "rede",
+      "total_fetch": 1
+    },
+    "warm": {
+      "id": 31910,
+      "origem": "cache",
+      "total_fetch": 1
+    },
+    "expired": {
+      "id": 31910,
+      "origem": "rede",
+      "total_fetch": 2
+    },
+    "tmdb_expirado_e_offline": {
+      "id": 31910,
+      "origem": "cache_antigo"
+    },
+    "tmdb_cache_only_expirado": {
+      "resposta_vazia": true
+    },
+    "tmdb_frio_e_offline": {
+      "resposta_vazia": true
+    },
+    "nota_sem_selo": {
+      "pillow_disponível": false,
+      "rótulo": "Birdie Wing",
+      "nota_na_tag": 6.5
+    }
+  }
+}
